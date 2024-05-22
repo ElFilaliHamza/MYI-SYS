@@ -33,15 +33,15 @@ jobs:
     - name: Deploy to cPanel
       env:
         SSH_PWD: ${{ secrets.SSH_PWD }} # Password stored in GitHub secret
-        CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
-        CPANEL_USERNAME: ${{ secrets.CPANEL_USERNAME }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       run: |
         RSYNC_OPTIONS="--archive --verbose --delete"
 
-        rsync $RSYNC_OPTIONS -e "sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no" ./ $CPANEL_USERNAME@$CPANEL_HOST:/home/$CPANEL_USERNAME/public_html/sysnewv2.medyouin.com/
+        rsync $RSYNC_OPTIONS -e "sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no" ./ $SSH_USERNAME@$SSH_HOST:/home/$SSH_USERNAME/public_html/sysnewv2.medyouin.com/
 
-        sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no $CPANEL_USERNAME@$CPANEL_HOST << 'EOF'
-          cd /home/$CPANEL_USERNAME/public_html/sysnewv2.medyouin.com
+        sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST << 'EOF'
+          cd /home/$SSH_USERNAME/public_html/sysnewv2.medyouin.com
           composer install --no-dev
           php artisan migrate --force
           php artisan config:cache
