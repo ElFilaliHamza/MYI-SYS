@@ -26,28 +26,27 @@ jobs:
     # - name: Run tests
     #   run: php artisan test
 
-    - name: Install rsync and sshpass
-      run: |
-        sudo apt-get install rsync sshpass
-    - name: Test SSH Connection
-      env:
-        SSH_PWD: ${{ secrets.SSH_PWD }} # Password stored in GitHub secret
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-      run: |
-        sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST echo "Connected successfully"
-    
+    - name: Install rsync
+      run: sudo apt-get install rsync
+
     - name: Deploy to cPanel
       env:
-        SSH_PWD: ${{ secrets.SSH_PWD }} # Password stored in GitHub secret
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       run: |
+        # Add the private key to the ssh-agent
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        eval "$(ssh-agent -s)"
+        ssh-add private_key
+
+        # Deploy using rsync over SSH
         RSYNC_OPTIONS="--archive --verbose --delete"
+        rsync $RSYNC_OPTIONS -e "ssh -o StrictHostKeyChecking=no -i private_key" ./ $SSH_USERNAME@$SSH_HOST:/home/$SSH_USERNAME/public_html/sysnewv2.medyouin.com/
 
-        rsync $RSYNC_OPTIONS -e "sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no" ./ $SSH_USERNAME@$SSH_HOST:/home/$SSH_USERNAME/public_html/sysnewv2.medyouin.com/
-
-        sshpass -p $SSH_PWD ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST << 'EOF'
+        # Execute commands on the server
+        ssh -o StrictHostKeyChecking=no -i private_key $SSH_USERNAME@$SSH_HOST << 'EOF'
           cd /home/$SSH_USERNAME/public_html/sysnewv2.medyouin.com
           composer install --no-dev
           php artisan migrate --force
@@ -57,4 +56,4 @@ jobs:
         EOF
 
     - name: Clean up
-      run: echo "Cleanup completed"
+      run: rm private_key
