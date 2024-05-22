@@ -26,6 +26,11 @@ jobs:
     # - name: Run tests
     #   run: php artisan test
 
+    - name: Set locale
+      run: |
+        export LC_ALL=C.UTF-8
+        export LANG=C.UTF-8
+
     - name: Install rsync
       run: sudo apt-get install rsync
 
