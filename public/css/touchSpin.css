@@ -1,0 +1,57 @@
+
+.touch-wrap {
+    max-width:300px;
+}
+.touch-spin {
+        text-align: left;
+    border-radius: 0px;
+   box-shadow: none;
+   width: 99%;
+}
+.signup .touch-spin {
+     border: 1px solid #acb4bc;
+}
+.input-group-addon, .touch-wrap .input-group-lg>.input-group-btn>.btn {
+  
+}
+.input-group .form-control:not(:first-child):not(:last-child) {
+    border-right:none;
+}
+.touch-wrap .input-group-lg>.input-group-addon {
+    font-size:15px;
+    padding-left: 0px;
+    width: 150px;
+}
+
+.touch-wrap .input-group-lg>.input-group-btn>.btn {
+    font-size:24px;
+    padding-top:3px;
+    color:#FF4D62;
+    background: #fff;
+    font-weight: 300;
+}
+.touch-wrap .input-group-lg>.input-group-btn>.btn:focus, .touch-wrap .input-group-lg>.input-group-btn>.btn:hover {
+    background: #FF4D62;
+    color: #fff;
+}
+.touch-wrap  .input-group-btn:first-child>.btn {
+/*     margin-right: -2px; */
+}
+.bed-bath {
+    margin:auto;
+    text-align:left;
+    min-width:130px;
+    border-left:none;
+    background: #fff url('http://www.airsorted.uk/static/assets/img/beds.jpg') no-repeat;
+    background-size: 28px;
+    background-position:  right 20px center;
+}
+
+.bed-bath.bath {
+      margin:auto;
+    text-align:left;
+    min-width:130px;
+    background: #fff url('http://www.airsorted.uk/static/assets/img/baths.jpg') no-repeat;
+    background-size: 28px;
+    background-position:  right 20px center;
+}

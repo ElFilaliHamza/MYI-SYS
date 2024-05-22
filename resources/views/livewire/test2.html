@@ -1,0 +1,249 @@
+
+
+
+                        <form wire:submit.prevent="createUser">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                    Ajouter Employee </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <label for="first_name">First Name</label>
+                                    <input class="form-control" wire:model.defer="firstName" id="first_name"
+                                        type="text" name="first_name" required autofocus>
+                                </div>
+
+                                <div>
+                                    <label for="last_name">Last Name</label>
+                                    <input class="form-control" wire:model.defer="lastName" id="last_name"
+                                        type="text" name="last_name" required>
+                                </div>
+
+                                <div>
+                                    <label for="gender">Gender</label>
+                                    <select wire:model.defer="gender" id="gender" name="gender" required>
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="phone_number">Phone Number</label>
+                                    <input class="form-control" wire:model.defer="phoneNumber" id="phone_number"
+                                        type="text" name="phone_number" required>
+                                </div>
+
+                                <div>
+                                    <label for="address_1">Address Line 1</label>
+                                    <input class="form-control" wire:model.defer="address1" id="address_1"
+                                        type="text" name="address_1" required>
+                                </div>
+
+                                <div>
+                                    <label for="address_2">Address Line 2</label>
+                                    <input class="form-control" wire:model.defer="address2" id="address_2"
+                                        type="text" name="address_2">
+                                </div>
+
+                                <div>
+                                    <label for="city">City</label>
+                                    <input class="form-control" wire:model.defer="city" id="city" type="text"
+                                        name="city" required>
+                                </div>
+
+                                <div>
+                                    <label for="zip">ZIP Code</label>
+                                    <input class="form-control" wire:model.defer="zip" id="zip" type="text"
+                                        name="zip" required>
+                                </div>
+
+                                <div>
+                                    <label for="comments">Comments</label>
+                                    <input class="form-control" wire:model.defer="comments" id="comments"
+                                        type="text" name="comments">
+                                </div>
+
+                                <div>
+                                    <label for="country">Country</label>
+                                    <input class="form-control" wire:model.defer="country" id="country" type="text"
+                                        name="country" required>
+                                </div>
+
+                                <div>
+                                    <label for="email">Email</label>
+                                    <input class="form-control" wire:model.defer="email" id="email" type="email"
+                                        name="email" required>
+                                </div>
+
+                                <div>
+                                    <label for="password">Password</label>
+                                    <input class="form-control" wire:model.defer="password" id="password"
+                                        type="password" name="password" required>
+                                </div>
+                                <div>
+                                    <label for="password_confirmation">Confirm Password</label>
+                                    <input class="form-control" wire:model.defer="password_confirmation"
+                                        id="password_confirmation" type="password" name="password_confirmation"
+                                        required>
+                                </div>
+                                <div>
+                                    <label>Permissions:</label><br>
+                                    <label for="createCheckbox">Client : </label>
+                                    <label for="createCheckbox">Create</label>
+                                    <input type="checkbox" id="createCheckbox" name="permissions[]"
+                                        value="create Client" wire:model.defer="permissions">
+
+                                    <label for="deleteCheckbox">Delete</label>
+                                    <input type="checkbox" id="deleteCheckbox" name="permissions[]"
+                                        value="delete Client" wire:model.defer="permissions">
+
+                                    <label for="updateCheckbox">Update</label>
+                                    <input type="checkbox" id="updateCheckbox" name="permissions[]"
+                                        value="update Client" wire:model.defer="permissions">
+
+                                    <label for="readCheckbox">Read</label>
+                                    <input type="checkbox" id="readCheckbox" name="permissions[]"
+                                        value="read Client" wire:model.defer="permissions">
+                                    <br>
+
+                                    <label for="permission_articles">Articles:</label>
+                                    <input type="checkbox" id="createCheckboxArticles" name="permissions[]"
+                                        value="create Articles" wire:model.defer="permissions">
+                                    <label for="createCheckboxArticles">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxArticles" name="permissions[]"
+                                        value="delete Articles" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxArticles">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxArticles" name="permissions[]"
+                                        value="update Articles" wire:model.defer="permissions">
+                                    <label for="updateCheckboxArticles">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxArticles" name="permissions[]"
+                                        value="read Articles" wire:model.defer="permissions">
+                                    <label for="readCheckboxArticles">Read</label>
+                                    <br>
+
+                                    <label for="permission_articles_kits">Articles en kits:</label>
+                                    <input type="checkbox" id="createCheckboxArticlesKits" name="permissions[]"
+                                        value="create Articles en kits" wire:model.defer="permissions">
+                                    <label for="createCheckboxArticlesKits">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxArticlesKits" name="permissions[]"
+                                        value="delete Articles en kits" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxArticlesKits">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxArticlesKits" name="permissions[]"
+                                        value="update Articles en kits" wire:model.defer="permissions">
+                                    <label for="updateCheckboxArticlesKits">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxArticlesKits" name="permissions[]"
+                                        value="read Articles en kits" wire:model.defer="permissions">
+                                    <label for="readCheckboxArticlesKits">Read</label>
+                                    <br>
+
+                                    <label for="permission_suppliers">Fournisseurs:</label>
+                                    <input type="checkbox" id="createCheckboxSuppliers" name="permissions[]"
+                                        value="create Fournisseurs" wire:model.defer="permissions">
+                                    <label for="createCheckboxSuppliers">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxSuppliers" name="permissions[]"
+                                        value="delete Fournisseurs" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxSuppliers">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxSuppliers" name="permissions[]"
+                                        value="update Fournisseurs" wire:model.defer="permissions">
+                                    <label for="updateCheckboxSuppliers">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxSuppliers" name="permissions[]"
+                                        value="read Fournisseurs" wire:model.defer="permissions">
+                                    <label for="readCheckboxSuppliers">Read</label>
+                                    <br>
+
+                                    <label for="permission_employees">Employés:</label>
+                                    <input type="checkbox" id="createCheckboxEmployees" name="permissions[]"
+                                        value="create Employés" wire:model.defer="permissions">
+                                    <label for="createCheckboxEmployees">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxEmployees" name="permissions[]"
+                                        value="delete Employés" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxEmployees">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxEmployees" name="permissions[]"
+                                        value="update Employés" wire:model.defer="permissions">
+                                    <label for="updateCheckboxEmployees">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxEmployees" name="permissions[]"
+                                        value="read Employés" wire:model.defer="permissions">
+                                    <label for="readCheckboxEmployees">Read</label>
+                                    <br>
+
+                                    <label for="permission_expenses">Dépenses:</label>
+                                    <input type="checkbox" id="createCheckboxExpenses" name="permissions[]"
+                                        value="create Dépenses" wire:model.defer="permissions">
+                                    <label for="createCheckboxExpenses">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxExpenses" name="permissions[]"
+                                        value="delete Dépenses" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxExpenses">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxExpenses" name="permissions[]"
+                                        value="update Dépenses" wire:model.defer="permissions">
+                                    <label for="updateCheckboxExpenses">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxExpenses" name="permissions[]"
+                                        value="read Dépenses" wire:model.defer="permissions">
+                                    <label for="readCheckboxExpenses">Read</label>
+                                    <br>
+
+                                    <label for="permission_expense_categories">Dépenses catégorie:</label>
+                                    <input type="checkbox" id="createCheckboxExpenseCategories" name="permissions[]"
+                                        value="create Dépenses catégorie" wire:model.defer="permissions">
+                                    <label for="createCheckboxExpenseCategories">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxExpenseCategories" name="permissions[]"
+                                        value="delete Dépenses catégorie" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxExpenseCategories">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxExpenseCategories" name="permissions[]"
+                                        value="update Dépenses catégorie" wire:model.defer="permissions">
+                                    <label for="updateCheckboxExpenseCategories">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxExpenseCategories" name="permissions[]"
+                                        value="read Dépenses catégorie" wire:model.defer="permissions">
+                                    <label for="readCheckboxExpenseCategories">Read</label>
+                                    <br>
+
+                                    <label for="permission_deposits">Encaissements:</label>
+                                    <input type="checkbox" id="createCheckboxDeposits" name="permissions[]"
+                                        value="create Encaissements" wire:model.defer="permissions">
+                                    <label for="createCheckboxDeposits">Create</label>
+
+                                    <input type="checkbox" id="deleteCheckboxDeposits" name="permissions[]"
+                                        value="delete Encaissements" wire:model.defer="permissions">
+                                    <label for="deleteCheckboxDeposits">Delete</label>
+
+                                    <input type="checkbox" id="updateCheckboxDeposits" name="permissions[]"
+                                        value="update Encaissements" wire:model.defer="permissions">
+                                    <label for="updateCheckboxDeposits">Update</label>
+
+                                    <input type="checkbox" id="readCheckboxDeposits" name="permissions[]"
+                                        value="read Encaissements" wire:model.defer="permissions">
+                                    <label for="readCheckboxDeposits">Read</label>
+                                    <br>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button class="btn btn-outline-success" type="submit" data-bs-dismiss="modal">Create User</button>
+                                    <button class="btn btn-outline-danger"
+                                        wire:click="$set('modalMode', '')">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
